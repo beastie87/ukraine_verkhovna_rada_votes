@@ -53,28 +53,28 @@ end
 def person_name_to_id(abbreviated_name, faction_name)
   # Special case for 2 people with the same abbreviated name
   # TODO: Remove this hardcoded exception
-  case abbreviated_name
-  when "Тимошенко Ю.В."
-    case faction_name
-    when 'Фракція політичної партії "Всеукраїнське об\'єднання "Батьківщина"'
-      "1792"
-    when 'Фракція Політичної партії "НАРОДНИЙ ФРОНТ"'
-      "18141"
-    when "Позафракційні"
-      nil # When there's 2 people with the same name in the same faction, we just don't know
-    else
-      raise "Unknown faction for special case person #{abbreviated_name}: #{faction_name}"
-    end
-  when "Бордюг І.Л."
-    "18040"
-  else
+  # case abbreviated_name
+  # when "Тимошенко Ю.В."
+  #   case faction_name
+  #   when 'Фракція політичної партії "Всеукраїнське об\'єднання "Батьківщина"'
+  #     "1792"
+  #   when 'Фракція Політичної партії "НАРОДНИЙ ФРОНТ"'
+  #     "18141"
+  #   when "Позафракційні"
+  #     nil # When there's 2 people with the same name in the same faction, we just don't know
+  #   else
+  #     raise "Unknown faction for special case person #{abbreviated_name}: #{faction_name}"
+  #   end
+  # when "Бордюг І.Л."
+  #   "18040"
+  # else
     @name_ids ||= morph_scraper_query("beastie87/ukraine_verkhovna_rada_deputies", "select name, id from 'data'")
     if deputy = @name_ids.find { |r| full_name_to_abbreviated(r["name"]) == abbreviated_name }
       deputy["id"]
     else
       raise "Person ID not found for: #{abbreviated_name}"
     end
-  end
+  #end
 end
 
 def faction_name_to_id(name)
