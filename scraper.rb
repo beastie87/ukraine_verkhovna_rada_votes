@@ -83,7 +83,7 @@ def faction_name_to_id(name)
   if faction = @factions.find { |f| f["faction"].capitalize.include? name.capitalize }
     faction["faction_id"]
   else
-    raise "Faction ID not found for: #{name}"
+    raise "Faction ID not found for: #{name.capitalize}"
   end
 end
 
