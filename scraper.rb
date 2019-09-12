@@ -68,7 +68,7 @@ def person_name_to_id(abbreviated_name, faction_name)
   when "Бордюг І.Л."
     "18040"
   else
-    @name_ids ||= morph_scraper_query("openaustralia/ukraine_verkhovna_rada_deputies", "select name, id from 'data'")
+    @name_ids ||= morph_scraper_query("beastie87/ukraine_verkhovna_rada_deputies", "select name, id from 'data'")
     if deputy = @name_ids.find { |r| full_name_to_abbreviated(r["name"]) == abbreviated_name }
       deputy["id"]
     else
