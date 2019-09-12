@@ -209,3 +209,4 @@ dates_to_parse.each do |date|
 end
 
 puts "All done."
+Фракція політичної партії "СЛУГА НАРОДУ"
